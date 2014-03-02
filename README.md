@@ -2,9 +2,9 @@
 
 Minimal requirements for running quickly a [Bottle][1] application withs Python 3 on [Openshift][2].
 
-Setup an account on [Openshift][2].
-Install RHC client tools following [this guide][3].
-You will probably need to [setup your SSH key][4].
+- Setup an account on [Openshift][2].
+- Install RHC client tools following [this guide][3].
+- You will probably need to [setup your SSH key][4].
 
 Create a python 3.3 app
 ```
@@ -14,9 +14,10 @@ rhc app create yourAppName python-3.3
 In local application folder app.py.disabled can be remove.
 
 In local application folder, add app.py from this repo.
-This is an official [openshift file][5]
+This is an official [Openshift file][5]
 
 Add Bottle and others needed packages in setup.py by modifying the "install_requires" attribute.
+
 If your package isn't available on PyPI you could try a [custom install][6].
 
 Create a "views" folder for tpl in /wsgi. We'll configure Bottle to search tpl in this folder (see wsgi/application).
