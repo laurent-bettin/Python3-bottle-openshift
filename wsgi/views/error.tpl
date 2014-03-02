@@ -7,7 +7,6 @@
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <meta name="Robots" content="all" />
-        <link type="text/css" rel="stylesheet" media="screen" href="/static/css/normalize.min.css" />
         <link type="text/css" rel="stylesheet" media="screen" href="/static/css/main.css" />
     </head>
 
