@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+import os
+from bottle import Bottle, TEMPLATE_PATH, view, static_file, error
+
+# http://stackoverflow.com/questions/10693695/loading-static-files-in-a-bottle-py-application-on-openshift
+# OPENSHIFT ENVIRONMENT VARIABLES: https://www.openshift.com/page/openshift-environment-variables
+TEMPLATE_PATH.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi/views/'))
+application = Bottle()
+app = application
+
+# serve static file
+@app.route('/static/<filename:path>')
+def static(filename):
+    root = os.path.join(os.path.dirname(__file__), 'static')
+    return static_file(filename, root=root)
+
+@app.error(404)
+@view('error.tpl')
+def error404(error):
+  return {"title": "404 not found", "error_message": "Sorry, no content here"}
+
+@app.error(418)
+def error418():
+  return "LOL, I’m a teapot"
+
+@app.route('/')
+@view('index.tpl')
+def index():
+    return  {"title": "Your application title"}
